@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "bluebird": "^3.4.0",
-    "coffee-script": "~1.6.3",
+    "coffee-script": "^1.6.3",
     "mocha": "^5.2.0",
     "nock": "~0.23.0",
     "sinon": "^1.10.3"
