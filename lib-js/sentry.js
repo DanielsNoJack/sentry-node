@@ -85,6 +85,30 @@ module.exports = Sentry = (function(_super) {
     });
   }
 
+  Sentry.prototype.nodered_error = function(err, logger, culprit, extra, tags, cb) {
+    var data;
+    if (extra == null) {
+      extra = {};
+    }
+    data = {
+      message: err.message,
+      logger: logger,
+      server_name: this.hostname,
+      tags: tags,
+      platform: 'Node-red',
+      level: 'error',
+      extra: _.extend(extra, {
+        stacktrace: err.stack
+      })
+    };
+    if (!_.isNull(culprit)) {
+      _.extend(data, {
+        culprit: culprit
+      });
+    }
+    return this._send(data, cb);
+  };
+
   Sentry.prototype.error = function(err, logger, culprit, extra, cb) {
     var data;
     if (extra == null) {
@@ -112,7 +136,7 @@ module.exports = Sentry = (function(_super) {
     return this._send(data, cb);
   };
 
-  Sentry.prototype.message = function(message, logger, extra, cb) {
+  Sentry.prototype.message = function(message, logger, extra, tags, level, cb) {
     var data;
     if (extra == null) {
       extra = {};
@@ -120,7 +144,8 @@ module.exports = Sentry = (function(_super) {
     data = {
       message: message,
       logger: logger,
-      level: 'info',
+      tags: tags,
+      level: level || 'info',
       extra: extra
     };
     return this._send(data, cb);
