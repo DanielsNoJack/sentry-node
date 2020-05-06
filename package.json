@@ -1,6 +1,6 @@
 {
   "name": "sentry-node",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "description": "simple Node wrapper around Sentry API",
   "engines": {
     "node": ">=0.10.x"
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/Clever/sentry-node.git"
+    "url": "git://github.com/DanielsNoJack/sentry-node.git"
   },
   "keywords": [
     "sentry",
@@ -23,7 +23,7 @@
   ],
   "license": "BSD",
   "bugs": {
-    "url": "https://github.com/Clever/sentry-node/issues"
+    "url": "https://github.com/DanielsNoJack/sentry-node/issues"
   },
   "dependencies": {
     "debug": "~2.6.9",
